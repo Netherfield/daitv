@@ -54,7 +54,7 @@ def main():
         lista_result.append([(f,g), result])
         conn.close()
     for elem in lista_result:
-        print[elem[0]]
+        print(elem[0])
         for e in elem[1]:
             print(e)
 

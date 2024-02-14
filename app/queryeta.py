@@ -19,7 +19,9 @@ lista_eta = cursor.fetchall()
 
 lista_eta = [e[0] for e in lista_eta]
 
+make_list = False
 lista_result = list()
+unite_query = []
 for e in lista_eta:
     print(e)
     query = f"""SELECT u.fasciaeta, r.MovieID, AVG(r.Rating) AS avg_rating
@@ -30,10 +32,20 @@ for e in lista_eta:
     GROUP BY r.MovieID
     ORDER BY avg_rating DESC
     LIMIT 10"""
+    if make_list:
+        conn = mysql.connector.connect(**DB_CONFIG)
+        cursor = conn.cursor()
+        cursor.execute(query)
+        result = cursor.fetchall()
+        lista_result.append([e, result])
+        conn.close()
+    else:
+        unite_query.append(query)
+if unite_query:
+    query = "( " + ") UNION ALL (".join(unite_query) + ")"
     conn = mysql.connector.connect(**DB_CONFIG)
     cursor = conn.cursor()
     cursor.execute(query)
     result = cursor.fetchall()
-    lista_result.append([e, result])
     conn.close()
 print(lista_result)
