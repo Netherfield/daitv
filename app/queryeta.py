@@ -48,4 +48,5 @@ if unite_query:
     cursor.execute(query)
     result = cursor.fetchall()
     conn.close()
+    print(result)
 print(lista_result)

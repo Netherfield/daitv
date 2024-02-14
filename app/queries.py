@@ -36,7 +36,9 @@ def main():
 
     lista_combo = [(a[0], b[0]) for a, b in lista_combo]
     print(lista_combo)
+    make_list = False
     lista_result = list()
+    unite_query = []
     for f,g in lista_combo:
         print(f,g)
         query = f"""SELECT u.Gender, u.fasciaeta, r.MovieID, AVG(r.Rating) AS avg_rating
@@ -47,17 +49,27 @@ def main():
         GROUP BY r.MovieID
         ORDER BY avg_rating DESC
         LIMIT 10"""
+        if make_list:
+            conn = mysql.connector.connect(**DB_CONFIG)
+            cursor = conn.cursor()
+            cursor.execute(query)
+            result = cursor.fetchall()
+            lista_result.append([(f,g), result])
+            conn.close()
+        else:
+            unite_query.append(query)
+    if unite_query:
+        query = "( " + ") UNION ALL (".join(unite_query) + ")"
         conn = mysql.connector.connect(**DB_CONFIG)
         cursor = conn.cursor()
         cursor.execute(query)
         result = cursor.fetchall()
-        lista_result.append([(f,g), result])
         conn.close()
     for elem in lista_result:
         print(elem[0])
         for e in elem[1]:
             print(e)
-
+    print(result)
     return lista_result
 
 
