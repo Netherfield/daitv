@@ -27,7 +27,7 @@ CREATE TABLE users (
     PRIMARY KEY (UserID)
 );
 
-CREATE TABLE MovieGenre (
+CREATE TABLE moviegenre (
     MovieGenreID INT AUTO_INCREMENT,
     MovieID INT NOT NULL,
     GenreID INT NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE MovieGenre (
     FOREIGN KEY (GenreID) REFERENCES genres(GenreID)
 );
 
-CREATE TABLE Ratings (
+CREATE TABLE ratings (
     RatingID INT AUTO_INCREMENT,
     UserID INT NOT NULL,
     MovieID INT NOT NULL,
