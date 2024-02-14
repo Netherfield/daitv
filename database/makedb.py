@@ -1,0 +1,99 @@
+
+
+import csv
+import prequel
+
+def batch(l:list, sample:int):
+    """
+    Processes a splicable object in chunks of sample size
+    until only the tail is left
+    """
+    while l:
+        # prova a tornare il primo sample e riassegna a l il restante
+        try:
+          ret = l[:sample]
+          yield ret
+          l = l[sample:]
+        # se l'indice e' fuori dal range allora ritorna tutta la l rimanente
+        except IndexError:
+          return l
+    return None
+
+
+
+generelookup = dict()
+gen_id = 0
+def main():
+    
+    def getgenres(conn, genre) -> list[list[int,int]]:
+        ret = []
+        global gen_id
+        global generelookup
+        for g in genre:
+            try:
+                ret.append(generelookup[g])
+            except:
+                generelookup[g] = gen_id
+                genrequery = f"INSERT INTO `genres` VALUES ({gen_id}, '{g}')"
+                print("Adding genre via query")
+                print(genrequery)
+                prequel.execute_query(conn, genrequery)
+                ret.append(gen_id)
+                gen_id += 1
+                print(generelookup)
+        return ret
+            
+    conn = prequel.create_db_connection('localhost', 'root', '', 'daitv')
+    with open("dbcleaner/Elenco Movies Pulito.csv", "r", encoding="utf-8", newline="") as fp:
+        reader = csv.reader(fp)
+        reader.__next__()
+
+        
+        movielist = list(reader)
+        for lines in batch(movielist, 2):
+            moviebatch = []
+            moviegenrebatch = []
+            for id,title,original,year,genre in lines:
+                id = int(id)
+                year = int(year)
+                # print(lines)
+                if "|" in genre:
+                    genre = genre.split("|")
+                else:
+                    genre = [genre]
+                # print(genre)
+                moviebatch += [[id, title, original, year]]
+                moviegenrebatch += [ [id, genreid] for genreid in getgenres(conn, genre)]
+                print(moviegenrebatch)
+                input("these are the genres")
+            moviequery ="""INSERT INTO `films` VALUES (%s, %s, %s, %s)"""
+            moviegenrequery ="""INSERT INTO `moviegenre` (`MovieID`, `GenreID`) VALUES (%s, %s)"""
+            prequel.execute_insert(conn, moviequery, moviebatch)
+            print("prima")
+            prequel.execute_insert(conn, moviegenrequery, moviegenrebatch)
+            print("dopo?")
+            input("done 20")
+        print("done")
+
+
+
+        
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    main()
+
+
