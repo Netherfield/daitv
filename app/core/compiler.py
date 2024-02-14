@@ -1,7 +1,7 @@
 
 
 import csv
-import prequel
+import app.utils.prequel as prequel
 
 def batch(l:list, sample:int):
     """

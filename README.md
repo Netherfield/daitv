@@ -1,2 +1,6 @@
 ### DAITV
 
+
+TODO:
+- [ ] Everything
+
