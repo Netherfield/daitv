@@ -24,14 +24,13 @@ lista_result = list()
 unite_query = []
 for e in lista_eta:
     print(e)
-    query = f"""SELECT u.fasciaeta, r.MovieID, AVG(r.Rating) AS avg_rating
+    query = f"""SELECT u.fasciaeta, r.MovieID, MAX(r.Rating) AS Voto_Massimo, MIN(r.Rating) as Voto_Minimo
     FROM ratings r
     JOIN users u
     ON r.UserID = u.UserID
     WHERE u.fasciaeta = "{e}"
     GROUP BY r.MovieID
-    ORDER BY avg_rating DESC
-    LIMIT 10"""
+    """
     if make_list:
         conn = mysql.connector.connect(**DB_CONFIG)
         cursor = conn.cursor()
