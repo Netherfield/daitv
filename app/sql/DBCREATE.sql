@@ -38,8 +38,8 @@ CREATE TABLE MovieGenre (
 
 CREATE TABLE Ratings (
     RatingID INT AUTO_INCREMENT,
-    MovieID INT NOT NULL,
     UserID INT NOT NULL,
+    MovieID INT NOT NULL,
     Rating INT NOT NULL,
     Timestamp INT,
     PRIMARY KEY (RatingID),

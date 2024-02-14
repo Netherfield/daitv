@@ -9,8 +9,11 @@ this_dir = os.path.dirname(__file__)
 base_dir = os.path.abspath(os.path.join(this_dir, ".."))
 sys.path.insert(0, base_dir)
 
-from app.core.compiler import main
+from app.loader import users,ratings
 
 if __name__ == "__main__":
-    main()
+    # users()
+    ratings()
+
+    os.system("pyclean .")
 

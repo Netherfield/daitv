@@ -41,7 +41,7 @@ def batch(l:list, sample:int):
 generelookup = dict()
 gen_id = 1
 
-def main():
+def movie_load():
     
     def getgenres(conn, genre) -> list[list[int,int]]:
         ret = []
