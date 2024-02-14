@@ -1,4 +1,22 @@
-
+# Copyright (c) 2023 Jules aka Netherfield
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
 import csv
 import app.utils.prequel as prequel
@@ -34,7 +52,7 @@ def main():
                 ret.append(generelookup[g])
             except:
                 generelookup[g] = gen_id
-                genrequery = f"INSERT INTO `genres` VALUES ({gen_id}, '{g}')"
+                genrequery = f"INSERT INTO `genres` VALUES ({str(gen_id)}, '{g}')"
                 print("Adding genre via query")
                 print(genrequery)
                 prequel.execute_query(conn, genrequery)
@@ -44,7 +62,7 @@ def main():
         return ret
             
     conn = prequel.create_db_connection('localhost', 'root', '', 'daitv')
-    with open("dbcleaner/Elenco Movies Pulito.csv", "r", encoding="utf-8", newline="") as fp:
+    with open("load/Elenco Movies Pulito.csv", "r", encoding="utf-8", newline="") as fp:
         reader = csv.reader(fp)
         reader.__next__()
 
