@@ -38,9 +38,9 @@ def batch(l:list, sample:int):
     return None
 
 
-
 generelookup = dict()
-gen_id = 0
+gen_id = 1
+
 def main():
     
     def getgenres(conn, genre) -> list[list[int,int]]:
@@ -52,13 +52,13 @@ def main():
                 ret.append(generelookup[g])
             except:
                 generelookup[g] = gen_id
-                genrequery = f"INSERT INTO `genres` VALUES ({str(gen_id)}, '{g}')"
-                print("Adding genre via query")
-                print(genrequery)
+                genrequery = f"""INSERT INTO `genres` VALUES ({str(gen_id)}, "{g}")"""
+                # print("Adding genre via query")
+                # print(genrequery)
                 prequel.execute_query(conn, genrequery)
                 ret.append(gen_id)
                 gen_id += 1
-                print(generelookup)
+                # print(generelookup)
         return ret
             
     conn = prequel.create_db_connection('localhost', 'root', '', 'daitv')
@@ -68,7 +68,7 @@ def main():
 
         
         movielist = list(reader)
-        for lines in batch(movielist, 2):
+        for lines in batch(movielist, 100):
             moviebatch = []
             moviegenrebatch = []
             for id,title,original,year,genre in lines:
@@ -80,17 +80,20 @@ def main():
                 else:
                     genre = [genre]
                 # print(genre)
-                moviebatch += [[id, title, original, year]]
-                moviegenrebatch += [ [id, genreid] for genreid in getgenres(conn, genre)]
-                print(moviegenrebatch)
-                input("these are the genres")
+                moviebatch += [[str(id), title, original, year]]
+                moviegenrebatch += [ [str(id), str(genreid)] for genreid in getgenres(conn, genre)]
+                # print(moviegenrebatch)
+                # input("these are the genres")
             moviequery ="""INSERT INTO `films` VALUES (%s, %s, %s, %s)"""
             moviegenrequery ="""INSERT INTO `moviegenre` (`MovieID`, `GenreID`) VALUES (%s, %s)"""
+            # for m in moviebatch:
+            #     print(m)
+            #     for i in range(len(moviegenrebatch)):
+            #         if(m[0] == moviegenrebatch[i][0]):
+            #             print(moviegenrebatch[i])
             prequel.execute_insert(conn, moviequery, moviebatch)
-            print("prima")
             prequel.execute_insert(conn, moviegenrequery, moviegenrebatch)
-            print("dopo?")
-            input("done 20")
+            print("Done 100 queries")
         print("done")
 
 

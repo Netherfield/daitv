@@ -3,3 +3,5 @@ DROP/*
 
 load/*
 !load/__init__.py
+
+**/__pycache__
