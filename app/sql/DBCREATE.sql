@@ -41,6 +41,7 @@ CREATE TABLE Ratings (
     MovieID INT NOT NULL,
     UserID INT NOT NULL,
     Rating INT NOT NULL,
+    Timestamp INT,
     PRIMARY KEY (RatingID),
     FOREIGN KEY (MovieID) REFERENCES films(MovieID),
     FOREIGN KEY (UserID) REFERENCES users(UserID)
