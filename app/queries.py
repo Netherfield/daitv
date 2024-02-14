@@ -1,44 +1,66 @@
 import mysql.connector
 
-
-"""
-E ○    il numero di film per ogni anno 
-E ○   il numero di film per ogni genere
-
-D ○    i film che hanno recensioni al di sotto di 3 per un numero 250 di persone in modo da eliminarli
-
-F ○    la top 10 per ogni intervallo di età e sesso
-
-J ○    rating film - i voti dal meno preferito al più preferito per fasce di età
-
-P ○    il numero degli iscritti alla piattaforma nelle varie province, voglio vedere le prime 20
-
-E ○    il numero degli abbonati in base al lavoro
-"""
-RATING = """
-
-
-"""
-
-PROVINCE = """SELECT CAP, COUNT(UserID) as Numero_Iscritti
-FROM users
-GROUP BY CAP
-ORDER BY Numero_Iscritti DESC
-LIMIT 20;"""
-
 DB_NAME = "daitv"
 DB_CONFIG = {"host": "localhost", "user": "root", "password": "", "database": DB_NAME}
 
 def conx():
     return mysql.connector.connect(**DB_CONFIG)
 
+# def range_gender():
+def main():
+    DB_CONFIG = {
+    "host": "localhost",
+    "user": "root",
+    "password": "",
+    "database": "daitv"
+    }
 
-def run():
-    connection = conx()
-    cursor = connection.cursor()
-    cursor.execute(RATING)
+    QUERY_ETA = "SELECT DISTINCT(fasciaeta) from users"
+    QUERY_GENDER = "SELECT DISTINCT(Gender) from users"
+
+    conn = mysql.connector.connect(**DB_CONFIG)
+    cursor = conn.cursor()
+    cursor.execute(QUERY_ETA)
+    lista_eta = cursor.fetchall()
+
+    conn = mysql.connector.connect(**DB_CONFIG)
+    cursor = conn.cursor()
+    cursor.execute(QUERY_GENDER)
+    lista_gender = cursor.fetchall()
+
+    print(lista_eta,lista_gender)
+
+    from itertools import product
+
+    lista_combo = list(product(lista_eta, lista_gender))
+
+    lista_combo = [(a[0], b[0]) for a, b in lista_combo]
+    print(lista_combo)
+    lista_result = list()
+    for f,g in lista_combo:
+        print(f,g)
+        query = f"""SELECT u.Gender, u.fasciaeta, r.MovieID, AVG(r.Rating) AS avg_rating
+        FROM ratings r
+        JOIN users u
+        ON r.UserID = u.UserID
+        WHERE u.Gender = "{g}" AND u.fasciaeta = "{f}"
+        GROUP BY r.MovieID
+        ORDER BY avg_rating DESC
+        LIMIT 10"""
+        conn = mysql.connector.connect(**DB_CONFIG)
+        cursor = conn.cursor()
+        cursor.execute(query)
+        result = cursor.fetchall()
+        lista_result.append([(f,g), result])
+        conn.close()
+    print(lista_result)
+
+    return lista_result
 
 
+
+if __name__ == "__main__":
+    main()
 
 
 
