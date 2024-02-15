@@ -31,6 +31,10 @@ def films_by_year():
     ### connect to db
     
 
+    
+def films_by_genre():
+    ...
+
 
 
 
