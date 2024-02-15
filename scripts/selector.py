@@ -1,0 +1,1 @@
+### runs the sql queries and creates the csvs to then load into mongo
