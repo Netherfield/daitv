@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/flaskr.iml" filepath="$PROJECT_DIR$/.idea/flaskr.iml" />
-      <module fileurl="file://$USER_HOME$/Desktop/mvc/.idea/mvc.iml" filepath="$USER_HOME$/Desktop/mvc/.idea/mvc.iml" />
     </modules>
   </component>
 </project>

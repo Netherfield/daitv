@@ -27,12 +27,12 @@
     <div class="container">
         <div id="grid" class="row">
             <!-- Le box della griglia -->
-            {% for i in range(30) %}
+            {% for i in movies %}
             <div class="col-sm-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Titolo Box {{ i+1 }}</h5>
-                        <p class="card-text">Contenuto Box {{ i+1 }}</p>
+                        <h5 class="card-title">Titolo: {{ i.Title }}</h5>
+                        <p class="card-text">Anno: {{ i.Year }}</p>
                     </div>
                 </div>
             </div>

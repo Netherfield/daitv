@@ -33,7 +33,6 @@ class Movie:
         :return:
         """
         return {
-            "type" : self,
             "MovieID": self.id,
             "Title": self.title,
             "Year": self.year,
