@@ -1,10 +1,4 @@
-DROP/*
-!DROP/__init__.py
-
-load/*
-!load/__init__.py
-
-extract/*
-!extract/__init__.py
+**/data/*/*
+!**/data/*/__init__.py
 
 **/__pycache__

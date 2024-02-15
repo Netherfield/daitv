@@ -8,7 +8,12 @@ All:
 Jacopo:
 (1 hour)
 - [ ] Reorganize project
+    - [ ] Study and set new folder structure
+    - [ ] Create and name new modules
 - [ ] Reduce redundancy
+    - [ ] move code to new moodules
+    - [ ] test code
+- [ ] update [.gitignore](https://github.com/Netherfield/daitv/blob/main/.gitignore)
 (1 hour)
 - [ ] (1) Create and name in python: creation, insert and select for sql
 
