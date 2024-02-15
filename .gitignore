@@ -1,4 +1,10 @@
 **/data/*/*
 !**/data/*/__init__.py
+
+
+
 **/secret.py
+**/secret
+
+
 **/__pycache__
