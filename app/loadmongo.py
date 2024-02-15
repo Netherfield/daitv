@@ -1,6 +1,8 @@
 import pandas as pd
 from pymongo import MongoClient
 
+from secret import uri_mongodb
+
 def load_data(uri_mongodb, nome_db, nome_collezione, path_csv):
     client = MongoClient(uri_mongodb)
     db = client[nome_db]
