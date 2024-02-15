@@ -46,7 +46,6 @@ def article_rearrange(s:str|None) -> str | None:
 
 def cleaner(row:list[str]):
     cl_row = [row[0]]
-    
     # original_pattern = re.compile(r"(?<=\()[^\(\)]+(?=\))")
     original_pattern = re.compile(r"(?<=\().+(?=\))") # to keep the double original titles
     title = row[1]
