@@ -20,14 +20,13 @@
 
 
 
-from utils.control import create_query
-
+from app.client import commands
 
 
 def films_by_year():
     ...
     ### create query
-    q = create_query()
+    q = commands.create_query()
 
     ### connect to db
     

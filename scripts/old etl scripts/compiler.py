@@ -19,8 +19,8 @@
 # SOFTWARE.
 
 import csv
-import app.utils.prequel as prequel
-from app.utils.custom import batch
+import app.control.prequel as prequel
+from app.control.custom import batch
 
 
 generelookup = dict()

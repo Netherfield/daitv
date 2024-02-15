@@ -20,11 +20,12 @@
 
 
 
-class Query:
-    def __init__(self):
-        self.connection = None
+from app.web.prequel import Query
 
 
-
+def create_query():
+    q = Query()
+    ...
+    
 
 
