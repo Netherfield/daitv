@@ -5,7 +5,7 @@ All:
 - [x] (partial)Create file with all queries translated to mongoDB
 - [x] Review said file
 
-Jacopo:
+Jac:
 
 - [ ] Reduce redundancy
     - [ ] move code to new moodules
@@ -20,17 +20,17 @@ Jacopo:
     - [x] Study and set new folder structure
     - [x] Create and name new modules
 
-Luigi:
+Louis:
 - [ ] Set up stylesheets and html for webapp
 
-Davide, Eliette, Francesco:
+Dave, Eli, Fra:
 (1 hour)(in progress)
 - [ ] Try to call via pymongo the following queries: [Daitv Queries](https://github.com/Netherfield/daitv/blob/main/docs/queries.md)
 (1 hour)
 - [x] Study MongoDB
 - [x] Study pymongo
 
-Pavlo:
+Pav:
 
 (1 hour)
 - [ ] WAIT FOR (1): insert the results of sql queries
