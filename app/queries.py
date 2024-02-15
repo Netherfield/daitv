@@ -19,11 +19,19 @@
 # SOFTWARE.
 
 
-def upload():
-    ...
-    ### updates the mongodb with the sql query results saved in csv
 
-    ### TODO: distinguish between update and overwrite
+from utils.control import create_query
+
+
+
+def films_by_year():
+    ...
+    ### create query
+    q = create_query()
+
+    ### connect to db
+    
+
 
 
 

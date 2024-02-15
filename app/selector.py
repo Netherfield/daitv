@@ -19,11 +19,26 @@
 # SOFTWARE.
 
 
-def upload():
-    ...
-    ### updates the mongodb with the sql query results saved in csv
 
-    ### TODO: distinguish between update and overwrite
+
+def selector():
+    ...
+    ### connect to db
+
+    ### run queries
+
+    ### write them to csv
+
+
+
+def select_to_csv():
+    ...
+    ### run query and store result in csv
+
+    ### TODO if block: check csv key, compare with query and update csv
+
+
+
 
 
 

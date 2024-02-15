@@ -19,11 +19,11 @@
 # SOFTWARE.
 
 
-def upload():
-    ...
-    ### updates the mongodb with the sql query results saved in csv
 
-    ### TODO: distinguish between update and overwrite
+class Query:
+    def __init__(self):
+        self.connection = None
+
 
 
 
