@@ -19,16 +19,37 @@
 # SOFTWARE.
 
 
-
+import app.web.connection as s
 
 class Query:
-    def __init__(self):
-        self.connection = None
+    host:str
+    user:str
+    password:str
+    db_name:str
 
-    
-    
-    def load(self):
+    def __init__(self, **credentials):
+        self.connection = None
+        self.load(**credentials)
+
+    def load(self, /, **credentials):
         from app.web import default_credentials
         default = vars(default_credentials)
+
+        for key in self.__annotations__.keys():
+            try:
+                value = credentials[key]
+            except KeyError:
+                value = getattr(self, key, default[key])
+            setattr(self, key, value)
+
+
+    def connect(self):
+        self.connection = s.create_db_connection(self.host,
+                                                 self.user,
+                                                 self.password,
+                                                 self.db_name)
+        
+
+
 
 

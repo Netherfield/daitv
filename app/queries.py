@@ -24,14 +24,18 @@ from app.client import commands
 
 
 def films_by_year():
-    ...
+    QUERY = """
+            SELECT Year, COUNT(*) AS numero_films
+            FROM films
+            GROUP BY Year"""
     ### create query
     q = commands.create_query()
+
 
     ### connect to db
     
 
-    
+
 def films_by_genre():
     ...
 

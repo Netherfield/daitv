@@ -24,8 +24,10 @@ from app.web.prequel import Query
 
 
 def create_query():
-    q = Query()
-    ...
+    query = Query(db_name='daitv') # see if you can move this somewhere else
+    query.connect()
+    return query
+    
     
 
 
