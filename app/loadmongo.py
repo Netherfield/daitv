@@ -8,7 +8,7 @@ def load_data(uri_mongodb, nome_db, nome_collezione, path_csv):
     dati = pd.read_csv(path_csv)
     collection.insert_many(dati.to_dict('records'))
 
-uri_mongodb = "mongodb+srv://admin:root@daitv.b4ysuqa.mongodb.net/"
+
 nome_db = "DAITV2"
 nome_collezione = "films"
 path = "films.csv"
