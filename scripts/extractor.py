@@ -3,7 +3,7 @@
 
 
 
-import app.parsers.parser as p
+import scripts.parsers.parser as p
 
 
 

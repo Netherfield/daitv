@@ -31,7 +31,6 @@ Dave, Eli, Fra:
 - [x] Study pymongo
 
 Pav:
-
 (1 hour)
 - [ ] WAIT FOR (1): insert the results of sql queries
 (1 hour)
