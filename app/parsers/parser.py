@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 ### here goes the parsers for the db etl
-
+### add function to separate year
 
 
 
