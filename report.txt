@@ -5,6 +5,8 @@ e da la possibilita' all'utente di trovare film vicini ai suoi gusti.
 
 La progettazione e' partita dal curare il database perche' contenesse le metriche
 piu' importanti per i nostri scopi
+
+
 Quali i film piu' apprezzati per fascia d'eta' e identita' di genere. (pag 3)
 
 solo query:
@@ -23,6 +25,8 @@ delle ricerche per categorie molto intuitive (film con valutazioni alte)
 delle semplici raccomandazioni ad hoc sulla pagina del film
 ( in progress, la logica, film ordinati per "vicinanza pesata", metrica protagonista, regista, scrittore, resto cast)
 
+go to parte 4
+
 
 ### parte 3
 il team si e' diviso in 3 subteam di cui uno diviso
@@ -40,7 +44,6 @@ strumenti:
 git-hub - version control
 discord - chat separate
 zoom - stream plenario
-
 
 ### parte 5
 with parte 1
