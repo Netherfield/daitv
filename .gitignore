@@ -1,5 +1,6 @@
 **/data/*/*
 !**/data/*/__init__.py
+!data/select/sql
 
 docs/phases/*
 !docs/phases/__init__.py
