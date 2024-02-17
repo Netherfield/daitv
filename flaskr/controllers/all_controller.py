@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify
 from views.all_view import render_all_view
 from models.movie import Movie
+
+
 view_controller = Blueprint("view", __name__)
 
 @view_controller.route("/api/data/all_shows")

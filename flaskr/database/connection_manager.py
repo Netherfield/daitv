@@ -1,7 +1,9 @@
 from database import mongodb_config
 from pymongo import MongoClient
 from database import sql_config
+from database import sqlite_config
 import mysql.connector
+import sqlite3
 
 
 def sql_type():
@@ -34,4 +36,3 @@ def mongodb_type():
     except Exception as e:
         print(f"errore: {e}")
         return None
-

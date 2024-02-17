@@ -1,11 +1,13 @@
 from flask import Flask
 from controllers.all_controller import view_controller
 from controllers.home_controller import home_controller
+from controllers.test_controller import test_controller
 
-app = Flask(__name__)
+apx = Flask(__name__)
 
-app.register_blueprint(view_controller)
-app.register_blueprint(home_controller)
+apx.register_blueprint(view_controller)
+apx.register_blueprint(home_controller)
+apx.register_blueprint(test_controller)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    apx.run(debug=True)
